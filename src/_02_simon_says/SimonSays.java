@@ -76,18 +76,22 @@ public class SimonSays extends KeyAdapter {
 		// 21. Use the speak method to tell the user they were correct
 
 		// 22. Increment tries by 1
-
+		tries ++;
 		// 25. If tries is greater than 9 (or however many you want)...
-
+		if (tries > 9) {
+			System.out.println("Your score is " + score);
+			System.exit(0);
+		}
 		// 26. Tell the user their score
 
 		// 27. Exit the program
-
+		
 		// 23. Dispose of the frame
-
+		frame.dispose();
 		// 24. Call the showImage method to show a new image
+		showImage();
 	}
-
+	
 	private void showImage() {
 		// 5. Initialize your frame to a new JFrame()
 		frame = new JFrame();
