@@ -112,42 +112,54 @@ public class Jeopardy implements ActionListener {
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-
+		if (buttonPressed == firstButton) {
+			askQuestion("Which call of duty video game has a character named Simon Ghost Riley?", 			"Modern Warfare 2", 800);
+		}
 			// Call the askQuestion() method
- 
+		
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
-
+		
 		// If the buttonPressed was the secondButton
-
+		if (buttonPressed == secondButton) {
+			askQuestion("What are you called when you are good at a video game and you make a new account so you can play against noobs?", "A Smurf", 1000);  
+		}
 			// Call the askQuestion() method with a harder question
 
 		// Clear the text on the button that was pressed (set the button text to nothing)
-
+		firstButton.setText("");
+		secondButton.setText("");
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
-		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		
+		// Use the playJeopardyTheme() method to play music while the user thinks of an answer
+		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
+		String ans = JOptionPane.showInputDialog(question);
 		
 		// Stop the theme music when they have entered their response. Hint: use the sound variable 
-		
+		sound.stop();
 		// If the answer is correct
-
+		if (ans.equals(correctAnswer)) {
+			JOptionPane.showMessageDialog(null, "Correct!");
+			score += prizeMoney;
+			
+		}
 			// Increase the score by the prizeMoney
 
 			// Pop up a message to tell the user they were correct
-
+		
 		// Otherwise
-
+		else {
+			score -= prizeMoney;
+			JOptionPane.showMessageDialog(null, "Incorrect! The right answer was " + correctAnswer);
+		}
 			// Decrement the score by the prizeMoney
 
 			// Pop up a message to tell the user they were wrong and give them the correct answer
 
 		// Call the updateScore() method
-
+		updateScore();
 	}
 
 	public void playJeopardyTheme() {
