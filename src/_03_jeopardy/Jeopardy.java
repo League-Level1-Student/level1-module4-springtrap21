@@ -62,19 +62,25 @@ public class Jeopardy implements ActionListener {
 		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
 		firstButton = createButton("500");
+		thirdButton = createButton("200");
+		fourthButton = createButton("1000");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
+		quizPanel.add(thirdButton);
+		quizPanel.add(fourthButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 			
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-		secondButton = createButton("500");
+		secondButton = createButton("800");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -108,26 +114,32 @@ public class Jeopardy implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		// Remove this temporary message after testing:
-		JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
+		//JOptionPane.showMessageDialog(null, "pressed " + ((JButton) e.getSource()).getText() + " button");
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
 		if (buttonPressed == firstButton) {
-			askQuestion("Which call of duty video game has a character named Simon Ghost Riley?", 			"Modern Warfare 2", 800);
+			askQuestion("Which call of duty video game has a character named Simon Ghost Riley?", 			"Modern Warfare 2", 500);
 		}
 			// Call the askQuestion() method
-		
+		if (buttonPressed == thirdButton) {
+			askQuestion("Which video game is the best open world game right now?", "Minecraft", 200);
+		}
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
+		
+		if (buttonPressed == fourthButton) {
+			askQuestion("What is one of the newest games that basiclly combines overwatch and CS:Go?", "Valorant", 1000);
+		}
 		
 		// If the buttonPressed was the secondButton
 		if (buttonPressed == secondButton) {
-			askQuestion("What are you called when you are good at a video game and you make a new account so you can play against noobs?", "A Smurf", 1000);  
+			askQuestion("What are you called when you are good at a video game and you make a new account so you can play against noobs?", "A Smurf", 800);  
 		}
 			// Call the askQuestion() method with a harder question
 
 		// Clear the text on the button that was pressed (set the button text to nothing)
-		firstButton.setText("");
-		secondButton.setText("");
+		buttonPressed.setText("");
+		
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
